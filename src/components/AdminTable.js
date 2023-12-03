@@ -5,6 +5,9 @@ import SearchBar from './SearchBar';
 import api from '../utils/Api';
 import './admin.css';
 const AdminTable = () => {
+
+
+
     const [data, setData] = useState([]); // hold the fetched data from API
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(10);
@@ -14,6 +17,17 @@ const AdminTable = () => {
         api.getData().then((response) => setData(response));
         console.log(data);
     }, []);
+
+    useEffect(() => {
+        const savedData = localStorage.getItem('data');
+        if (savedData) {
+          setData(JSON.parse(savedData));
+        }
+      }, []);
+      
+      useEffect(() => {
+        localStorage.setItem('data', JSON.stringify(data));
+      }, [data]);
 
     // Pagination logic
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -41,6 +55,7 @@ const AdminTable = () => {
         const newData = data.filter(item => !selectedItems.includes(item.id));
         setData(newData);
         setSelectedItems([]);
+        setSelectAll(false);
     }
       const handleSave = (id) => {
         setEditId(null);
@@ -73,7 +88,7 @@ const AdminTable = () => {
            <div>
             <SearchBar data={data} setData={setData} />
 
-            
+
             <div style={{display: 'flex', listStyleType: 'none', justifyContent:'right'}}>
             <button
             onClick={() => {handleDeleteSelected(selectedItems)}}
