@@ -20,8 +20,12 @@ const SearchBar = ({ data, setData }) => {
         placeholder="Search..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
+        style={{margin: '5px', padding: '5px'}}
       />
-      <button onClick={handleSearch}>Search</button>
+      <button onClick={handleSearch}
+       style={{margin: '2px', padding: '8px', color: 'white', backgroundColor: '#3333FF', border: 'none', borderRadius: '5px', cursor: 'pointer'}}
+       
+      >Search</button>
     </div>
   );
 };

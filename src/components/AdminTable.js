@@ -92,7 +92,8 @@ const AdminTable = () => {
             <div style={{display: 'flex', listStyleType: 'none', justifyContent:'right'}}>
             <button
             onClick={() => {handleDeleteSelected(selectedItems)}}
-            >Delete Selected</button>
+           style={{margin: '5px', padding: '5px', color: 'white', backgroundColor: '#A52A2A', border: 'none', borderRadius: '5px', cursor: 'pointer'}}
+            >Delete All Selected</button>
             </div>
             </div>
             <table>
@@ -127,12 +128,19 @@ const AdminTable = () => {
                             <td>{editId === item.id ? <input Value={item.role} onChange={(e) => handleChange(e, 'role')} /> : item.role}</td>
                             <td>
                             {editId === item.id ? (
-        <button onClick={() => handleSave(item.id)}>Save</button>
+        <button onClick={() => handleSave(item.id)}
+        style={{margin: '5px', padding: '5px', color: 'white', backgroundColor: '#008000', border: 'none', borderRadius: '5px', cursor: 'pointer'}}
+        >Save</button>
       ) : (
-        <button onClick={() => handleEdit(item)}>Edit</button>
+        <button onClick={() => handleEdit(item)}
+        style={{margin: '5px', padding: '5px', color: 'white', backgroundColor: '#29A6A6', border: 'none', borderRadius: '5px', cursor: 'pointer'}}
+        >Edit</button>
       )}
                                 {
-                                    <button onClick={()=> HandleDelete(item.id)}>Delete</button>
+                                    <button onClick={()=> HandleDelete(item.id)}
+                                    style={{margin: '5px', padding: '5px', color: 'white', backgroundColor: '#800000', border: 'none', borderRadius: '5px', cursor: 'pointer'}}
+       
+                                    >Delete</button>
                                 }
                             </td>
                         </tr>
